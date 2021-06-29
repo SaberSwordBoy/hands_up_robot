@@ -1,6 +1,8 @@
 # hands_up_robot
 Code for the raspi and arduino for a custom karate helmet that yells at you when your hands are down
 
+# [Watch the video on youtube](https://youtube.com)
+
 ## About
 This project uses the hardware listed below:
 
@@ -15,3 +17,9 @@ On a (modified) karate helmet there are two pushbuttons that send signals down t
 if none of the buttons have been pressed for a set amount of time (changes from 3-5 depending on difficulty level), then the arduino sends
 a signal to the Raspberry Pi via Serial, where the Raspi plays a random audio file from internal memory and sends a signal back when it's finished,
 restarting the arduino timer, for the same thing to run again
+
+
+## Try it yourself
+Feel free to download and make this project, and make modifications/improve it! (*No idea why you would want to do that though...*)
+Just a note, the python code will only work on a raspberry pi without some changes, 
+and make sure you connect all the buttons and LEDs to the right pins.
