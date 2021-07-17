@@ -34,6 +34,7 @@ while loop:
     timer += 0.3
     if shutdown_timer >= shutdown_time:
         print("SHUTTING DOWN")
+        soundPlayer.playShutdownSound()
         sys.exit()
     if timer >= timer_length:
         on_hands_down()
