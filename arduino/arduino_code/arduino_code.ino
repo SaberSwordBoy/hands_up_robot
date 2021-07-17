@@ -1,49 +1,58 @@
 /*
 Written by Bryce Casamento
+MIT Lisence i guess
 */
+
+// Button and LED pins
 int buttonPin = 2;
 int buttonPin2 = 3;
 int statusLedPin = 13;
-int statusLedPin2 = 12;
-bool running = false;
+int statusLedPin2 = 12; // currently not using
+
+
+// for reading from Serial
 char inputBuffer[16];
 char hands_up_string[] = "handsup";
 char hands_down_string[] = "handsdown";
-int timer_duration = 500;
-int buttonState1 = 0;
-int buttonState2 = 0;
 
-bool leftHandUp = false;
-bool rightHandUp = false;
+bool HANDS_UP = false; // whether the user's hands are up
+
+int buttonState1 = 0;
+
 void setup() {
-  // put your setup code here, to run once:
   pinMode(statusLedPin, OUTPUT);
   pinMode(buttonPin, INPUT_PULLUP);
   Serial.begin(9600);
 }
 
 void loop() {
-  unsigned long timeBegin = micros();
-  // put your main code here, to run repeatedly:
   /*
+  // This is for READING the Serial, not needed as of now as we arent getting commands from the pi
   if (Serial.available() > 0) {
    Serial.readBytesUntil('\n', inputBuffer, 16);
    if (strcmp(hands_down_string, inputBuffer) == 0) {
-    
-   }
-  } */
+    }
+  }
+  */
+  unsigned int currentTime = millis();
+  
   buttonState1 = digitalRead(buttonPin);
-  buttonState2 = digitalRead(buttonPin2);
-  // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
+  if (buttonState1 > 0) {
+    if (!HANDS_UP) {
+      Serial.println("handsup");
+      HANDS_UP = true;
+    }
+  } else {
+    if (HANDS_UP) {
+      Serial.println("handsdown");
+      HANDS_UP = false;
+    }
+    
+    
+  }
+  // check if the buttons are pressed. If it is, the buttonState is HIGH:
+  digitalWrite(statusLedPin, buttonState1);
+
+  delay(100);
   
-  digitalWrite(statusLedPin, !buttonState1);
-  
-  Serial.write(rightHandUp);
-  Serial.write(leftHandUp + "\n");
-  // Leave the following code at the end of the function, always (for timing everything properly)
-  unsigned long timeEnd = micros();
-  unsigned long duration = timeEnd - timeBegin;
-  double averageDuration = (double)duration / 1000.0;
-  /*Serial.println(averageDuration);
-  int delayTime = target_time - averageDuration;*/
 }
