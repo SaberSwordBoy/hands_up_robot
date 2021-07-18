@@ -18,6 +18,19 @@ if none of the buttons have been pressed for a set amount of time (changes from 
 a signal to the Raspberry Pi via Serial, where the Raspi plays a random audio file from internal memory and sends a signal back when it's finished,
 restarting the arduino timer, for the same thing to run again
 
+Layout of files:
+| hands_up_robot
+  | raspi
+    | *main.py*
+    | *soundPlayer.py*
+    | *game.py*
+    | *{some other files}*
+    | sounds
+      | *{Sounds for the soundplayer}*
+  | arduino code
+  |
+
+
 
 ## Try it yourself
 Feel free to download and make this project, and make modifications/improve it! (*No idea why you would want to do that though...*)
