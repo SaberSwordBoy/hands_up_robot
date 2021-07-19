@@ -20,15 +20,14 @@ restarting the arduino timer, for the same thing to run again
 
 Layout of files:  
 | hands_up_robot  
-  | raspi  
-    | *main.py*  
-    | *soundPlayer.py*  
-    | *game.py*  
-    | *{some other files}*  
-    | sounds  
-      | *{Sounds for the soundplayer}*  
-  | arduino code  
-  |  
+ - | raspi  
+   - | *main.py*  
+   - | *soundPlayer.py*  
+   - | *game.py*  
+   - | *{some other files}*  
+   - | sounds  
+     - | *{Sounds for the soundplayer}*  
+ - | arduino code    
 
 
 
